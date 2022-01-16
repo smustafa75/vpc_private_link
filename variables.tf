@@ -11,8 +11,9 @@ variable "vpc_cidr" {
 }
 
 
-variable "private_cidrs" {
-
+variable "private_subnets" {
+  type    = list(string)
+  default = []
 }
 
 

@@ -6,7 +6,7 @@ output "VPC_Name" {
 
 output "Private_Subnets" {
   description = "Private Subnets"
-  value       = module.network.private_cidrs
+  value       = module.network.private_subnets
 }
 
 output "Bucket_Name" {

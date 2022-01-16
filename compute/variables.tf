@@ -15,7 +15,5 @@ variable "instance_profile" {
   
 }
 
-variable "private_cidrs" {
-   type    = list(string)
-  default = []
-}
+variable "private_subnets" {
+   }
