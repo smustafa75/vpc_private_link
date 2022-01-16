@@ -1,0 +1,10 @@
+aws_region    = "us-east-1"
+project_name  = "Terraform-VPC-PrivateLink-S3"
+vpc_cidr      = "10.11.0.0/16"
+private_cidrs = ["10.11.3.0/24", "10.11.4.0/24"]
+instance_type    = "t2.micro"
+instance_count   = "1"
+policy_name      = "Access_CW"
+role_name        = "AccessCloudWatch"
+s3_policy    = "Access_S3"
+instance_profile = ""

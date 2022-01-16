@@ -1,0 +1,26 @@
+{
+    "Version" : "2012-10-17",
+    "Statement" : [
+        {
+            "Action": "sts:AssumeRole",
+            "Principal" : {
+                "Service" : ["ec2.amazonaws.com", "s3.amazonaws.com"]
+                
+            },
+            "Effect": "Allow",
+            "Sid": "AllowEC2toServices"
+            
+        },
+        {
+            "Action": "sts:AssumeRole",
+            "Principal" : {
+                "AWS" : "arn:aws:iam::092521477875:root"
+                
+            },
+            "Effect": "Allow",
+            "Sid": "Allowlocalroot"
+            
+        }
+        
+        ]
+}
