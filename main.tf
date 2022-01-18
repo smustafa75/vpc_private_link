@@ -6,6 +6,8 @@ module "network" {
   source          = "./network"
   vpc_cidr        = var.vpc_cidr
   private_subnets = var.private_subnets
+  public_subnets = var.public_subnets
+
 }
 
 module "storage" {
@@ -24,7 +26,9 @@ module "compute" {
   public_security_group  = module.network.public_security_group
   instance_profile       = module.iam.iam_instance_profile_arn
   depends_on = [
-    module.iam.iam_instance_profile_arn
+    module.iam.iam_instance_profile_arn,
+    module.network.public_net,
+    module.network.private_net
   ]
 }
 
