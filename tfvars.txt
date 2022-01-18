@@ -8,3 +8,4 @@ policy_name      = "Access_CW"
 role_name        = "AccessCloudWatch"
 s3_policy    = "Access_S3"
 instance_profile = ""
+

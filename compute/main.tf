@@ -9,6 +9,14 @@ data "aws_ami" "server_ami" {
   }
 }
 
+data "template_file" "user-init" {
+  count    = 2
+  template = file("${path.module}/userdata.tpl")
+
+  vars = {
+    firewall_subnets = "${element(var.public_subnets, count.index)}"
+  }
+}
 
 resource "aws_instance" "tf_server" {
   count                  = var.instance_count
@@ -19,6 +27,20 @@ resource "aws_instance" "tf_server" {
   iam_instance_profile = var.instance_profile
 
   tags = {
-    Name = " EC2 - TF_Server-${count.index + 1 }"
+    Name = " EC2 - Private_TF_Server-${count.index + 1 }"
+  }
+}
+
+resource "aws_instance" "public_tf_server" {
+  count                  = var.instance_count
+  instance_type          = var.instance_type
+  ami                    = data.aws_ami.server_ami.id
+  vpc_security_group_ids = [var.public_security_group]
+  subnet_id              = element(var.public_subnets,count.index)
+  user_data              = "${data.template_file.user-init.*.rendered[count.index]}"
+  iam_instance_profile = var.instance_profile
+
+  tags = {
+    Name = " EC2 - Public_TF_Server-${count.index + 1 }"
   }
 }

@@ -11,9 +11,17 @@ variable "private_security_group" {
   
 }
 
+variable "public_security_group" {
+  
+}
+
 variable "instance_profile" {
   
 }
 
 variable "private_subnets" {
    }
+
+variable "public_subnets" {
+   }
+

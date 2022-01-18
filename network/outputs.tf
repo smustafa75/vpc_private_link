@@ -1,6 +1,10 @@
 
 output "private_subnets" {
-  value = aws_subnet.tf_private_subnet.*.cidr_block
+  value = aws_subnet.tf_private_subnet.*.id
+}
+
+output "public_subnets" {
+  value = aws_subnet.tf_private_subnet.*.id
 }
 
 output "vpcname" {
@@ -12,4 +16,18 @@ output "p_subnet_id"{
 }
 output "private_security_group" {
   value = aws_security_group.tf_private_sg.id
+}
+
+
+output "private_subnets_cidr" {
+  value = aws_subnet.tf_private_subnet.*.cidr_block
+}
+
+output "public_subnets_cidr" {
+  value = aws_subnet.tf_public_subnet.*.cidr_block
+  
+}
+
+output "public_security_group" {
+  value = aws_security_group.tf_public_sg.id
 }

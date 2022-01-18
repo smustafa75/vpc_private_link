@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 module "network" {
-  source        = "./network"
-  vpc_cidr      = var.vpc_cidr
+  source          = "./network"
+  vpc_cidr        = var.vpc_cidr
   private_subnets = var.private_subnets
 }
 
@@ -18,12 +18,15 @@ module "compute" {
   instance_type          = var.instance_type
   instance_count         = var.instance_count
   private_subnets        = module.network.private_subnets
+  public_subnets         = module.network.public_subnets
   private_security_group = module.network.private_security_group
+  public_security_group  = module.network.public_security_group
   instance_profile       = module.iam.iam_instance_profile_arn
   depends_on = [
     module.iam.iam_instance_profile_arn
   ]
 }
+
 
 module "iam" {
   source      = "./iam"

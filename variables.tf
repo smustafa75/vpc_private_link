@@ -16,6 +16,15 @@ variable "private_subnets" {
   default = []
 }
 
+variable "public_subnets" {
+  type    = list(string)
+  default = []
+}
+
+variable "accessip" {
+  default = "0.0.0.0/0"
+}
+
 
 variable "instance_type" {
   default = "t2.micro"
