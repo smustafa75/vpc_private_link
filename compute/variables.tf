@@ -19,9 +19,9 @@ variable "instance_profile" {
   
 }
 
-variable "private_subnets" {
+variable "private_net" {
    }
 
-variable "public_subnets" {
+variable "public_net" {
    }
 

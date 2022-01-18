@@ -1,9 +1,9 @@
 
-output "private_subnets" {
+output "private_net" {
   value = aws_subnet.tf_private_subnet.*.id
 }
 
-output "public_subnets" {
+output "public_net" {
   value = aws_subnet.tf_private_subnet.*.id
 }
 

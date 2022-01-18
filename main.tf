@@ -13,12 +13,13 @@ module "storage" {
   project_name = var.project_name
 }
 
+
 module "compute" {
   source                 = "./compute"
   instance_type          = var.instance_type
   instance_count         = var.instance_count
-  private_subnets        = module.network.private_subnets
-  public_subnets         = module.network.public_subnets
+  private_net        = module.network.private_net
+  public_net         = module.network.public_net
   private_security_group = module.network.private_security_group
   public_security_group  = module.network.public_security_group
   instance_profile       = module.iam.iam_instance_profile_arn

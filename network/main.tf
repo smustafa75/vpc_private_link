@@ -41,7 +41,7 @@ resource "aws_default_route_table" "tf_private_rt" {
 }
 
 resource "aws_subnet" "tf_public_subnet" {
-  count                   = 2
+  count                   = length(var.public_subnets)
   vpc_id                  = aws_vpc.tf_vpc.id
   cidr_block              = var.public_subnets[count.index]
   map_public_ip_on_launch = true
@@ -55,7 +55,7 @@ resource "aws_subnet" "tf_public_subnet" {
 
 
 resource "aws_subnet" "tf_private_subnet" {
-  count                   = 2
+  count                   = length(var.private_subnets)
   vpc_id                  = aws_vpc.tf_vpc.id
   cidr_block              = var.private_subnets[count.index]
   map_public_ip_on_launch = false

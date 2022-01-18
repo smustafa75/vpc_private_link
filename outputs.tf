@@ -6,12 +6,12 @@ output "VPC_Name" {
 
 output "Private_Subnets" {
   description = "Private Subnets"
-  value       = concat(module.network.private_subnets, module.network.public_subnets_cidr)
+  value       = concat(module.network.private_net, module.network.public_subnets_cidr)
 }
 
 output "Public_Subnets" {
   description = "Public Subnets"
-  value       = concat(module.network.public_subnets, module.network.public_subnets_cidr)
+  value       = concat(module.network.public_net, module.network.public_subnets_cidr)
 }
 output "Bucket_Name" {
   value = module.storage.bucketname

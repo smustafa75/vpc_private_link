@@ -14,7 +14,7 @@ data "template_file" "user-init" {
   template = file("${path.module}/userdata.tpl")
 
   vars = {
-    firewall_subnets = "${element(var.public_subnets, count.index)}"
+    firewall_subnets = "${element(var.public_net, count.index)}"
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_instance" "tf_server" {
   instance_type          = var.instance_type
   ami                    = data.aws_ami.server_ami.id
   vpc_security_group_ids = [var.private_security_group]
-  subnet_id              = element(var.private_subnets,count.index)
+  subnet_id              = element(var.private_net,count.index)
   iam_instance_profile = var.instance_profile
 
   tags = {
@@ -36,7 +36,7 @@ resource "aws_instance" "public_tf_server" {
   instance_type          = var.instance_type
   ami                    = data.aws_ami.server_ami.id
   vpc_security_group_ids = [var.public_security_group]
-  subnet_id              = element(var.public_subnets,count.index)
+  subnet_id              = element(var.public_net,count.index)
   user_data              = "${data.template_file.user-init.*.rendered[count.index]}"
   iam_instance_profile = var.instance_profile
 

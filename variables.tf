@@ -7,7 +7,6 @@ variable "project_name" {
 }
 
 variable "vpc_cidr" {
-
 }
 
 
@@ -19,12 +18,12 @@ variable "private_subnets" {
 variable "public_subnets" {
   type    = list(string)
   default = []
+  
 }
 
 variable "accessip" {
   default = "0.0.0.0/0"
 }
-
 
 variable "instance_type" {
   default = "t2.micro"
