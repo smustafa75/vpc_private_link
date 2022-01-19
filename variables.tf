@@ -18,7 +18,7 @@ variable "private_subnets" {
 variable "public_subnets" {
   type    = list(string)
   default = []
-  
+
 }
 
 variable "accessip" {

@@ -1,5 +1,4 @@
 
-
 resource "aws_default_route_table" "tf_private_rt" {
   
   default_route_table_id = aws_vpc.tf_vpc.default_route_table_id
@@ -23,7 +22,6 @@ resource "aws_subnet" "tf_private_subnet" {
     Name = "tf_private_${count.index + 1}"
   }
 }
-
 
 
 resource "aws_route_table_association" "tf_private_assoc" {
