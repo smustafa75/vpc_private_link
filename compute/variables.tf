@@ -8,11 +8,12 @@ variable "instance_count" {
 
 
 variable "private_security_group" {
-  
+
+default =""  
 }
 
 variable "public_security_group" {
-  
+  default =""
 }
 
 variable "instance_profile" {
@@ -20,8 +21,12 @@ variable "instance_profile" {
 }
 
 variable "private_net" {
+type    = list(string)
+  default = []
    }
 
 variable "public_net" {
+type    = list(string)
+  default = []
    }
 
