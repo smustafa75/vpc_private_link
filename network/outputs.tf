@@ -4,7 +4,7 @@ output "private_net" {
 }
 
 output "public_net" {
-  value = aws_subnet.tf_private_subnet.*.id
+  value = aws_subnet.tf_public_subnet.*.id
 }
 
 output "vpcname" {
