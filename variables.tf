@@ -48,4 +48,3 @@ variable "s3_policy" {
 variable "instance_profile" {
   default = ""
 }
-

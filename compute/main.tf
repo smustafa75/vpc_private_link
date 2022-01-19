@@ -22,6 +22,7 @@ resource "aws_instance" "tf_server" {
   count                  = var.instance_count
   instance_type          = var.instance_type
   ami                    = data.aws_ami.server_ami.id
+  key_name = "RepoKey"
   vpc_security_group_ids = [var.private_security_group]
   subnet_id              = element(var.private_net,count.index)
   iam_instance_profile = var.instance_profile
@@ -35,6 +36,7 @@ resource "aws_instance" "public_tf_server" {
   count                  = var.instance_count
   instance_type          = var.instance_type
   ami                    = data.aws_ami.server_ami.id
+  key_name = "RepoKey"
   vpc_security_group_ids = [var.public_security_group]
   subnet_id              = element(var.public_net,count.index)
   user_data              = "${data.template_file.user-init.*.rendered[count.index]}"
