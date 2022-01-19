@@ -1,4 +1,5 @@
 
+
 resource "aws_default_route_table" "tf_private_rt" {
   
   default_route_table_id = aws_vpc.tf_vpc.default_route_table_id
@@ -27,9 +28,7 @@ resource "aws_subnet" "tf_private_subnet" {
 resource "aws_route_table_association" "tf_private_assoc" {
   count          = length(aws_subnet.tf_private_subnet)
   subnet_id      = aws_subnet.tf_private_subnet.*.id[count.index]
-  route_table_id = aws_default_route_table.tf_private_rt.id
-#  vpc_endpoint_id = aws_vpc_endpoint.s3_endpoint.id
-  
+  route_table_id = aws_default_route_table.tf_private_rt.id  
 }
 
 

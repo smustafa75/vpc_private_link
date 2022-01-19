@@ -6,6 +6,29 @@ resource "aws_internet_gateway" "tf_internet_gw" {
   }
 }
 
+#resource "aws_eip" "tf_nat_gw_eip" {
+#  depends_on = [
+#    aws_route_table_association.tf_public_assoc
+#  ]
+#  vpc = true
+#  tags = {
+#    Name = "EIP - Module Example"
+#  }
+#}
+
+#resource "aws_nat_gateway" "nat_gw" {
+#  depends_on = [
+#    aws_eip.tf_nat_gw_eip
+#  ]
+#  allocation_id = aws_eip.tf_nat_gw_eip.id
+#  #subnet_id = element(aws_vpc.tf_vpc.tf_public_subnet[count.index])
+#  subnet_id = aws_subnet.tf_public_subnet.*.id[0]
+#  tags = {
+#    Name = "NATGW - Module Example"
+#  }
+#}
+
+
 resource "aws_route_table" "tf_public_rt" {
   vpc_id = aws_vpc.tf_vpc.id
 
