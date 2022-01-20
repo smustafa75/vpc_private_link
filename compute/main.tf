@@ -17,6 +17,14 @@ data "template_file" "user-init" {
     firewall_subnets = "${element(var.public_net, count.index)}"
   }
 }
+data "template_file" "p_user-init" {
+  count    = 2
+  template = file("${path.module}/p_userdata.tpl")
+
+  vars = {
+    firewall_subnets = "${element(var.private_net, count.index)}"
+  }
+}
 
 resource "aws_instance" "tf_server" {
   count                  = var.instance_count
