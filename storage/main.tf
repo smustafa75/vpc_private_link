@@ -20,7 +20,6 @@ resource "aws_s3_bucket" "tf_code_bucket" {
 data "template_file" "s3_policy_work" {
   template = templatefile("${path.module}/policy_vpce.json", {
     bucket_arns = aws_s3_bucket.tf_code_bucket.arn
-   # bucket_id = aws_s3_bucket.tf_code_bucket.id
     source_vpc = var.vpcendpoint
 
   })
