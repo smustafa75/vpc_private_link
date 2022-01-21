@@ -5,7 +5,10 @@
              "Effect": "Deny",
              "Principal":"*",
              "Action":  [ 
-                "s3:*"
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:GetObjectAcl",
+                "s3:PutObjectAcl"
                 ],
              "Resource":  [ "${bucket_arns}", "${bucket_arns}/*"],
              "Condition": {
