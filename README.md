@@ -24,7 +24,7 @@ Below infrastructure will be provisioned:
 - The script will automatically install HTTP server in machines inside public subnet and start the service.
 - Once script will automatically insatll and configure AWS CLI in both machines inside private subnet.
 - You will see EC2 metrics in CloudWatch within 10 minutes.
-- The **tfvars** files is excluded having safety precautions.
+- The **tfvars** files is added as text having non sensitive variables.
 
 ## Test
 
