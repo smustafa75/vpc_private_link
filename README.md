@@ -30,8 +30,8 @@ Below infrastructure will be provisioned:
 
 - Login into machine in public subnet and try below command. The action will fail. 
 - Try same commands in machine inside private subnet and it will work.
-    aws s3 ls
-    aws s3 cp FILENAME s3://BUCKET-NAME
+    - aws s3 ls
+    - aws s3 cp FILENAME s3://BUCKET-NAME
 
 
 ### Terraform Version ###
