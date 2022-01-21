@@ -20,9 +20,19 @@ Below infrastructure will be provisioned:
 - 01 VPC Gateway Endpoint
 
 
-Once completed, the script will automatically install HTTP into EC2 insatnces and start the service.
-You will see EC2 metrics in CloudWatch within 10 minutes.
-The **tfvars** files is added as text, use it as desired.
+## Post provision actions
+- The script will automatically install HTTP server in machines inside public subnet and start the service.
+- Once script will automatically insatll and configure AWS CLI in both machines inside private subnet.
+- You will see EC2 metrics in CloudWatch within 10 minutes.
+- The **tfvars** files is excluded having safety precautions.
+
+## Test
+
+- Login into machine in public subnet and try below command. The action will fail. 
+- Try same commands in machine inside private subnet and it will work.
+    aws s3 ls
+    aws s3 cp FILENAME s3://BUCKET-NAME
+
 
 ### Terraform Version ###
 Terraform v1.1.2
