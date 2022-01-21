@@ -31,3 +31,7 @@ output "public_subnets_cidr" {
 output "public_security_group" {
   value = aws_security_group.tf_public_sg.id
 }
+
+output "vpc_endpoint" {
+  value = aws_vpc_endpoint.s3_endpoint.id
+}

@@ -10,7 +10,7 @@ data "aws_ami" "server_ami" {
 }
 
 data "template_file" "user-init" {
-  count    = 2
+  count    = var.instance_count
   template = file("${path.module}/userdata.tpl")
 
   vars = {
@@ -18,7 +18,7 @@ data "template_file" "user-init" {
   }
 }
 data "template_file" "p_user-init" {
-  count    = 2
+  count    = var.instance_count
   template = file("${path.module}/p_userdata.tpl")
 
   vars = {
@@ -33,6 +33,7 @@ resource "aws_instance" "tf_server" {
   key_name = "RepoKey"
   vpc_security_group_ids = [var.private_security_group]
   subnet_id              = element(var.private_net,count.index)
+  user_data              = "${data.template_file.p_user-init.*.rendered[count.index]}"
   iam_instance_profile = var.instance_profile
 
   tags = {

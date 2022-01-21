@@ -1,0 +1,25 @@
+{"Version": "2012-10-17",
+    "Statement": [
+         {
+             "Sid": "DenyAccessExceptEndPoint",
+             "Effect": "Deny",
+             "Principal":"*",
+             "Action":  [ 
+                "s3:*"
+                ],
+             "Resource":  [ "${bucket_arns}", "${bucket_arns}/*"],
+             "Condition": {
+                "StringNotEquals": {
+                    "aws:SourceVpce": "${source_vpc}"
+                }
+            }
+         },
+         {
+            "Sid": "HandleBucketPolicy",
+            "Effect": "Allow",
+            "Principal":"*",
+            "Action": ["s3:GetBucketPolicy", "s3:PutBucketPolicy"],
+            "Resource":  "${bucket_arns}"
+        }
+     ]
+ }

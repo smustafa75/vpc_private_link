@@ -13,6 +13,11 @@ module "network" {
 module "storage" {
   source       = "./storage"
   project_name = var.project_name
+  vpcendpoint  = module.network.vpc_endpoint
+
+  depends_on = [
+    module.network.aws_vpc_endpoint
+  ]
 }
 
 
