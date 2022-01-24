@@ -16,7 +16,7 @@ Below infrastructure will be provisioned:
     - 01 IAM Policy
     - 01 CloudWatch Policy
 - 01 S3 Bucket
-- 01 S3 Bucket policy
+    - 01 S3 Bucket policy
 - 01 VPC Gateway Endpoint
 
 
